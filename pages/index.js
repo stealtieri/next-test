@@ -1,8 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios from 'axios'
+import { useEffect } from 'react'
 
-export default function Home() {
+const Home = () => {
+
+  const apiCall = async () => {
+    const resp = await axios.get('/api/hello')
+    console.log(resp)
+  }
+
+  useEffect(()=> {
+    apiCall()
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -69,3 +81,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
